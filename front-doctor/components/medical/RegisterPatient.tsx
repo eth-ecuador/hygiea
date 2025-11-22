@@ -2,12 +2,16 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { getAddress } from 'ethers'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { UserPlus, CheckCircle2, Loader2 } from "lucide-react"
+import { contractAddress } from '@/config/wagmi'
+import contractABI from '@/contracts/MedicalRecords.json'
 
 export default function RegisterPatient() {
   const [formData, setFormData] = useState({
@@ -22,23 +26,63 @@ export default function RegisterPatient() {
     numeroSeguroSocial: ''
   })
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [checksummedAddress, setChecksummedAddress] = useState('')
+
+  const { writeContract, data: hash, isPending, error } = useWriteContract()
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    
-    // TODO: Implement blockchain registration
-    setTimeout(() => {
-      setIsLoading(false)
-      setIsSuccess(true)
-      setTimeout(() => setIsSuccess(false), 3000)
-    }, 2000)
+
+    // Validate Ethereum address format
+    if (!formData.pacienteAddress.match(/^0x[a-fA-F0-9]{40}$/)) {
+      alert('Please enter a valid wallet address (format: 0x...)')
+      return
+    }
+
+    try {
+      // Normalize to lowercase, then convert to checksummed
+      const normalizedAddress = formData.pacienteAddress.toLowerCase()
+      const checksummedAddr = getAddress(normalizedAddress)
+
+      writeContract({
+        address: contractAddress as `0x${string}`,
+        abi: contractABI.abi,
+        functionName: 'registrarPaciente',
+        args: [
+          checksummedAddr as `0x${string}`,
+          formData.nombre,
+          parseInt(formData.edad),
+          formData.sexo,
+          formData.tipoSangre,
+          formData.direccion,
+          formData.telefono,
+          formData.email,
+          formData.numeroSeguroSocial
+        ]
+      })
+    } catch (err: any) {
+      console.error('Error registering patient:', err)
+      alert('Error: ' + (err.message || 'Could not register patient'))
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+
+    // If changing patient address, show checksummed version
+    if (name === 'pacienteAddress' && value.match(/^0x[a-fA-F0-9]{40}$/)) {
+      try {
+        const normalizedAddress = value.toLowerCase()
+        const checksummed = getAddress(normalizedAddress)
+        setChecksummedAddress(checksummed)
+      } catch (err) {
+        setChecksummedAddress('')
+      }
+    } else if (name === 'pacienteAddress') {
+      setChecksummedAddress('')
+    }
   }
 
   if (isSuccess) {
@@ -95,6 +139,13 @@ export default function RegisterPatient() {
                 className="font-mono"
               />
               <p className="text-xs text-[#666666]">The blockchain address of the patient</p>
+              {checksummedAddress && checksummedAddress !== formData.pacienteAddress && (
+                <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                  <p className="text-xs font-semibold text-blue-900 mb-1">✓ Checksummed format:</p>
+                  <p className="text-xs font-mono text-blue-700 break-all">{checksummedAddress}</p>
+                  <p className="text-xs text-blue-600 mt-1">This format will be used automatically</p>
+                </div>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -211,15 +262,26 @@ export default function RegisterPatient() {
             </div>
           </div>
 
+          {error && (
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-800">❌ Error: {error.message}</p>
+            </div>
+          )}
+
           <Button
             type="submit"
-            disabled={isLoading}
-            className="w-full bg-[#0B3861] hover:bg-[#1F4E6F] text-white py-6 text-lg shadow-lg transition-all hover:-translate-y-0.5"
+            disabled={isPending || isConfirming}
+            className="w-full bg-[#0B3861] hover:bg-[#1F4E6F] text-white py-6 text-lg shadow-lg transition-all hover:-translate-y-0.5 disabled:opacity-50"
           >
-            {isLoading ? (
+            {isPending ? (
               <>
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Registering on Blockchain...
+                Signing Transaction...
+              </>
+            ) : isConfirming ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                Confirming on Blockchain...
               </>
             ) : (
               <>

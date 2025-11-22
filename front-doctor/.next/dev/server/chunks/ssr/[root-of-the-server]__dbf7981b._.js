@@ -48,7 +48,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f
 ;
 ;
 // Determine network based on ENV
-const isTestnet = process.env.NEXT_PUBLIC_NETWORK === 'testnet' || true;
+const isTestnet = ("TURBOPACK compile-time value", "testnet") === 'testnet' || true;
 const config = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f40$wagmi$2f$core$2f$dist$2f$esm$2f$createConfig$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createConfig"])({
     chains: ("TURBOPACK compile-time truthy", 1) ? [
         __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$viem$2f$_esm$2f$chains$2f$definitions$2f$sapphireTestnet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sapphireTestnet"]
@@ -60,7 +60,7 @@ const config = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$fro
         [__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$viem$2f$_esm$2f$chains$2f$definitions$2f$sapphireTestnet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["sapphireTestnet"].id]: (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$viem$2f$_esm$2f$clients$2f$transports$2f$http$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["http"])('https://testnet.sapphire.oasis.io')
     } : "TURBOPACK unreachable"
 });
-const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0x...';
+const contractAddress = ("TURBOPACK compile-time value", "0x82F79A62A06f620DD0b7B396D0C19F0b3a5Cf8F5") || '0x...';
 const networkConfig = ("TURBOPACK compile-time truthy", 1) ? {
     name: 'Sapphire Testnet',
     chainId: 0x5aff,
