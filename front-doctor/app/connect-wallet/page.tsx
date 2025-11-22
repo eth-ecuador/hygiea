@@ -41,10 +41,11 @@ export default function ConnectWalletPage() {
     }
   }, [isConnected, address, chain, switchChain, router, hasRedirected])
 
-  const handleConnect = async () => {
-    const injectedConnector = connectors.find(c => c.id === 'injected')
-    if (injectedConnector) {
-      connect({ connector: injectedConnector })
+  const handleConnect = async (connector: any) => {
+    try {
+      connect({ connector })
+    } catch (error) {
+      console.error('Connection error:', error)
     }
   }
 
@@ -121,31 +122,16 @@ export default function ConnectWalletPage() {
           >
             <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-sm">
               <CardContent className="p-8 sm:p-12">
-                {/* Animated Logo */}
+                {/* Logo */}
                 <div className="flex justify-center mb-8">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: "easeInOut",
-                    }}
-                    className="relative"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0B3861] to-[#2B7A9B] rounded-full blur-2xl opacity-20" />
-                    <div className="relative bg-gradient-to-br from-[#0B3861] to-[#2B7A9B] p-8 rounded-3xl shadow-xl">
-                      <Image
-                        src="/logo.png"
-                        alt="Hygiea MedGuard"
-                        width={120}
-                        height={120}
-                        className="h-28 w-28 sm:h-32 sm:w-32"
-                      />
-                    </div>
-                  </motion.div>
+                  <Image
+                    src="/gif.gif"
+                    alt="Hygiea MedGuard"
+                    width={300}
+                    height={300}
+                    className="h-72 w-102"
+                    unoptimized
+                  />
                 </div>
 
                 {/* Security Features */}
@@ -186,25 +172,30 @@ export default function ConnectWalletPage() {
                       </Alert>
                     )}
 
-                    {/* Single Connect Button */}
-                    <Button
-                      size="lg"
-                      onClick={handleConnect}
-                      disabled={isConnecting}
-                      className="w-full bg-gradient-to-r from-[#0B3861] to-[#2B7A9B] text-white hover:from-[#1F4E6F] hover:to-[#0B3861] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg py-7"
-                    >
-                      {isConnecting ? (
-                        <>
-                          <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                          Connecting Wallet...
-                        </>
-                      ) : (
-                        <>
-                          <Wallet className="mr-3 h-6 w-6" />
-                          Connect Wallet to Continue
-                        </>
-                      )}
-                    </Button>
+                    {/* Multi-Wallet Connect Buttons */}
+                    <div className="space-y-3">
+                      {connectors.map((connector) => (
+                        <Button
+                          key={connector.id}
+                          size="lg"
+                          onClick={() => handleConnect(connector)}
+                          disabled={isConnecting}
+                          className="w-full bg-gradient-to-r from-[#0B3861] to-[#2B7A9B] text-white hover:from-[#1F4E6F] hover:to-[#0B3861] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg py-7"
+                        >
+                          {isConnecting ? (
+                            <>
+                              <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                              Connecting...
+                            </>
+                          ) : (
+                            <>
+                              <Wallet className="mr-3 h-6 w-6" />
+                              Connect with {connector.name}
+                            </>
+                          )}
+                        </Button>
+                      ))}
+                    </div>
 
                     {/* Network Info */}
                     <div className="mt-6 p-4 rounded-lg bg-[#F8FBFC] border border-[#0B3861]/10">

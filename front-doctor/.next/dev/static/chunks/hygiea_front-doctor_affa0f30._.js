@@ -289,7 +289,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnect$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/wagmi/dist/esm/hooks/useConnect.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnection$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__useConnection__as__useAccount$3e$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/wagmi/dist/esm/hooks/useConnection.js [app-client] (ecmascript) <export useConnection as useAccount>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useAccount$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/wagmi/dist/esm/hooks/useAccount.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useSwitchChain$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/node_modules/wagmi/dist/esm/hooks/useSwitchChain.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hygiea/front-doctor/components/ui/card.tsx [app-client] (ecmascript)");
@@ -320,7 +320,7 @@ function ConnectWalletPage() {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { connectors, connect, error: connectError, isPending: isConnecting } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnect$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useConnect"])();
-    const { address, isConnected, chain } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnection$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__useConnection__as__useAccount$3e$__["useAccount"])();
+    const { address, isConnected, chain } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useAccount$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAccount"])();
     const { switchChain } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useSwitchChain$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSwitchChain"])();
     const [showSuccess, setShowSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [hasRedirected, setHasRedirected] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -356,12 +356,13 @@ function ConnectWalletPage() {
         router,
         hasRedirected
     ]);
-    const handleConnect = async ()=>{
-        const injectedConnector = connectors.find((c)=>c.id === 'injected');
-        if (injectedConnector) {
+    const handleConnect = async (connector)=>{
+        try {
             connect({
-                connector: injectedConnector
+                connector
             });
+        } catch (error) {
+            console.error('Connection error:', error);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -391,7 +392,7 @@ function ConnectWalletPage() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                        lineNumber: 55,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -415,13 +416,13 @@ function ConnectWalletPage() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                        lineNumber: 67,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                lineNumber: 54,
+                lineNumber: 55,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -443,7 +444,7 @@ function ConnectWalletPage() {
                                         className: "h-12 w-auto"
                                     }, void 0, false, {
                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 87,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -451,13 +452,13 @@ function ConnectWalletPage() {
                                         children: "Hygiea MedGuard"
                                     }, void 0, false, {
                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 88,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                lineNumber: 85,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -468,28 +469,28 @@ function ConnectWalletPage() {
                                     children: "← Back to Home"
                                 }, void 0, false, {
                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 91,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                lineNumber: 89,
+                                lineNumber: 90,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                    lineNumber: 83,
+                    lineNumber: 84,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                lineNumber: 82,
+                lineNumber: 83,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -516,7 +517,7 @@ function ConnectWalletPage() {
                                     children: "You're About to Begin"
                                 }, void 0, false, {
                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                    lineNumber: 108,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -524,13 +525,13 @@ function ConnectWalletPage() {
                                     children: "Connect your wallet to access secure medical records on the blockchain"
                                 }, void 0, false, {
                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                            lineNumber: 102,
+                            lineNumber: 103,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -553,61 +554,21 @@ function ConnectWalletPage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex justify-center mb-8",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                                animate: {
-                                                    scale: [
-                                                        1,
-                                                        1.05,
-                                                        1
-                                                    ],
-                                                    rotate: [
-                                                        0,
-                                                        5,
-                                                        -5,
-                                                        0
-                                                    ]
-                                                },
-                                                transition: {
-                                                    duration: 4,
-                                                    repeat: Number.POSITIVE_INFINITY,
-                                                    ease: "easeInOut"
-                                                },
-                                                className: "relative",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "absolute inset-0 bg-gradient-to-br from-[#0B3861] to-[#2B7A9B] rounded-full blur-2xl opacity-20"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                        lineNumber: 138,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "relative bg-gradient-to-br from-[#0B3861] to-[#2B7A9B] p-8 rounded-3xl shadow-xl",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                            src: "/logo.png",
-                                                            alt: "Hygiea MedGuard",
-                                                            width: 120,
-                                                            height: 120,
-                                                            className: "h-28 w-28 sm:h-32 sm:w-32"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 140,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                        lineNumber: 139,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                src: "/gif.gif",
+                                                alt: "Hygiea MedGuard",
+                                                width: 300,
+                                                height: 300,
+                                                className: "h-72 w-102",
+                                                unoptimized: true
+                                            }, void 0, false, {
                                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                lineNumber: 126,
+                                                lineNumber: 127,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                            lineNumber: 125,
+                                            lineNumber: 126,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -644,7 +605,7 @@ function ConnectWalletPage() {
                                                             className: "h-6 w-6 text-[#2B7A9B]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 151,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -652,18 +613,18 @@ function ConnectWalletPage() {
                                                             children: feature.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 166,
+                                                            lineNumber: 152,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, index, true, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 144,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                            lineNumber: 152,
+                                            lineNumber: 138,
                                             columnNumber: 17
                                         }, this),
                                         !showSuccess ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -688,53 +649,61 @@ function ConnectWalletPage() {
                                                             className: "h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 182,
+                                                            lineNumber: 168,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
                                                             children: connectError.message
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 183,
+                                                            lineNumber: 169,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 181,
+                                                    lineNumber: 167,
                                                     columnNumber: 23
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    size: "lg",
-                                                    onClick: handleConnect,
-                                                    disabled: isConnecting,
-                                                    className: "w-full bg-gradient-to-r from-[#0B3861] to-[#2B7A9B] text-white hover:from-[#1F4E6F] hover:to-[#0B3861] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg py-7",
-                                                    children: isConnecting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                                                className: "mr-3 h-6 w-6 animate-spin"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                lineNumber: 198,
-                                                                columnNumber: 27
-                                                            }, this),
-                                                            "Connecting Wallet..."
-                                                        ]
-                                                    }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"], {
-                                                                className: "mr-3 h-6 w-6"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                lineNumber: 203,
-                                                                columnNumber: 27
-                                                            }, this),
-                                                            "Connect Wallet to Continue"
-                                                        ]
-                                                    }, void 0, true)
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-3",
+                                                    children: connectors.map((connector)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                            size: "lg",
+                                                            onClick: ()=>handleConnect(connector),
+                                                            disabled: isConnecting,
+                                                            className: "w-full bg-gradient-to-r from-[#0B3861] to-[#2B7A9B] text-white hover:from-[#1F4E6F] hover:to-[#0B3861] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg py-7",
+                                                            children: isConnecting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                                                                        className: "mr-3 h-6 w-6 animate-spin"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
+                                                                        lineNumber: 187,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    "Connecting..."
+                                                                ]
+                                                            }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wallet$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Wallet$3e$__["Wallet"], {
+                                                                        className: "mr-3 h-6 w-6"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
+                                                                        lineNumber: 192,
+                                                                        columnNumber: 31
+                                                                    }, this),
+                                                                    "Connect with ",
+                                                                    connector.name
+                                                                ]
+                                                            }, void 0, true)
+                                                        }, connector.id, false, {
+                                                            fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
+                                                            lineNumber: 178,
+                                                            columnNumber: 25
+                                                        }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 190,
+                                                    lineNumber: 176,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -745,7 +714,7 @@ function ConnectWalletPage() {
                                                             children: "⚠️ Network Required"
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 211,
+                                                            lineNumber: 202,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -753,7 +722,7 @@ function ConnectWalletPage() {
                                                             children: "You'll be prompted to add Sapphire Testnet to your wallet if you don't have it yet."
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 212,
+                                                            lineNumber: 203,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -766,14 +735,14 @@ function ConnectWalletPage() {
                                                                             children: "Network:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                            lineNumber: 216,
+                                                                            lineNumber: 207,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         " Sapphire Testnet"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                    lineNumber: 216,
+                                                                    lineNumber: 207,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -783,20 +752,20 @@ function ConnectWalletPage() {
                                                                             children: "Chain ID:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                            lineNumber: 217,
+                                                                            lineNumber: 208,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         " 23295"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                                    lineNumber: 217,
+                                                                    lineNumber: 208,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 215,
+                                                            lineNumber: 206,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -807,19 +776,19 @@ function ConnectWalletPage() {
                                                             children: "🚰 Get testnet tokens"
                                                         }, void 0, false, {
                                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                            lineNumber: 219,
+                                                            lineNumber: 210,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 210,
+                                                    lineNumber: 201,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                            lineNumber: 173,
+                                            lineNumber: 159,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                             initial: {
@@ -852,12 +821,12 @@ function ConnectWalletPage() {
                                                         className: "h-10 w-10 text-white"
                                                     }, void 0, false, {
                                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                        lineNumber: 242,
+                                                        lineNumber: 233,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 236,
+                                                    lineNumber: 227,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -865,7 +834,7 @@ function ConnectWalletPage() {
                                                     children: "Wallet Connected!"
                                                 }, void 0, false, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 244,
+                                                    lineNumber: 235,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -878,7 +847,7 @@ function ConnectWalletPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 236,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -886,13 +855,13 @@ function ConnectWalletPage() {
                                                     children: "Redirecting to your dashboard..."
                                                 }, void 0, false, {
                                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                    lineNumber: 246,
+                                                    lineNumber: 237,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                            lineNumber: 230,
+                                            lineNumber: 221,
                                             columnNumber: 19
                                         }, this),
                                         !showSuccess && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -918,7 +887,7 @@ function ConnectWalletPage() {
                                                         children: "Terms of Service"
                                                     }, void 0, false, {
                                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                        lineNumber: 260,
+                                                        lineNumber: 251,
                                                         columnNumber: 23
                                                     }, this),
                                                     " ",
@@ -930,34 +899,34 @@ function ConnectWalletPage() {
                                                         children: "Privacy Policy"
                                                     }, void 0, false, {
                                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                        lineNumber: 264,
+                                                        lineNumber: 255,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                                lineNumber: 258,
+                                                lineNumber: 249,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                            lineNumber: 252,
+                                            lineNumber: 243,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 124,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                lineNumber: 122,
+                                lineNumber: 123,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                            lineNumber: 117,
+                            lineNumber: 118,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -983,35 +952,35 @@ function ConnectWalletPage() {
                                         children: "Contact Support"
                                     }, void 0, false, {
                                         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                        lineNumber: 283,
+                                        lineNumber: 274,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                                lineNumber: 281,
+                                lineNumber: 272,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                            lineNumber: 275,
+                            lineNumber: 266,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                    lineNumber: 100,
+                    lineNumber: 101,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-                lineNumber: 99,
+                lineNumber: 100,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/hygiea/front-doctor/app/connect-wallet/page.tsx",
-        lineNumber: 52,
+        lineNumber: 53,
         columnNumber: 5
     }, this);
 }
@@ -1019,7 +988,7 @@ _s(ConnectWalletPage, "/4rnYBMtodXqx4ybtAaG2djV7+I=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnect$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useConnect"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useConnection$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__useConnection__as__useAccount$3e$__["useAccount"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useAccount$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAccount"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hygiea$2f$front$2d$doctor$2f$node_modules$2f$wagmi$2f$dist$2f$esm$2f$hooks$2f$useSwitchChain$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSwitchChain"]
     ];
 });
