@@ -1,6 +1,6 @@
-import { createConfig, http } from 'wagmi';
+import { createConfig } from 'wagmi';
 import { sapphire, sapphireTestnet } from 'wagmi/chains';
-import { injected } from 'wagmi/connectors';
+import { injectedWithSapphire, sapphireHttpTransport } from '@oasisprotocol/sapphire-wagmi-v2';
 
 // Determine network based on ENV
 const isTestnet = process.env.NEXT_PUBLIC_NETWORK === 'testnet' || true;
@@ -8,12 +8,12 @@ const isTestnet = process.env.NEXT_PUBLIC_NETWORK === 'testnet' || true;
 export const config = createConfig({
   chains: isTestnet ? [sapphireTestnet] : [sapphire],
   connectors: [
-    injected(), // MetaMask
+    injectedWithSapphire(), // MetaMask with Sapphire encryption
   ],
   transports: isTestnet ? {
-    [sapphireTestnet.id]: http('https://testnet.sapphire.oasis.io'),
+    [sapphireTestnet.id]: sapphireHttpTransport(),
   } : {
-    [sapphire.id]: http('https://sapphire.oasis.io'),
+    [sapphire.id]: sapphireHttpTransport(),
   },
 });
 
