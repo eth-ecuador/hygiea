@@ -9,12 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@oasisprotocol/sapphire-wagmi-v2": "^2.0.0",
+    "@tanstack/react-query": "^5.20.0",
+    "ethers": "^6.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^2.5.0",
     "viem": "^2.7.0",
-    "@tanstack/react-query": "^5.20.0",
-    "@oasisprotocol/sapphire-wagmi-v2": "^2.0.0"
+    "wagmi": "^2.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
