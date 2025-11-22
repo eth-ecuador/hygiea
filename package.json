@@ -1,0 +1,25 @@
+{
+  "name": "medical-records-sapphire",
+  "version": "1.0.0",
+  "description": "Sistema de registros médicos confidenciales en Sapphire",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network sapphire-testnet",
+    "deploy:local": "hardhat run scripts/deploy.js --network sapphire-localnet",
+    "node": "hardhat node",
+    "frontend": "cd frontend && npm run dev"
+  },
+  "keywords": ["sapphire", "healthcare", "privacy", "blockchain"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@oasisprotocol/sapphire-hardhat": "^2.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@oasisprotocol/sapphire-contracts": "^0.2.0",
+    "dotenv": "^16.3.1"
+  }
+}
