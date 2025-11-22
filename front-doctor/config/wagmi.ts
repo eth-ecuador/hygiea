@@ -8,7 +8,21 @@ const isTestnet = process.env.NEXT_PUBLIC_NETWORK === 'testnet' || true;
 export const config = createConfig({
   chains: isTestnet ? [sapphireTestnet] : [sapphire],
   connectors: [
-    injectedWithSapphire(), // MetaMask with Sapphire encryption
+    injectedWithSapphire({
+      target: {
+        id: 'rabby',
+        name: 'Rabby Wallet',
+        provider: (window: any) => window.rabby,
+      },
+    }), // Rabby Wallet with Sapphire encryption
+    injectedWithSapphire({
+      target: {
+        id: 'metamask',
+        name: 'MetaMask',
+        provider: (window: any) => window.ethereum?.isMetaMask ? window.ethereum : undefined,
+      },
+    }), // MetaMask with Sapphire encryption
+    injectedWithSapphire(), // Other injected wallets with Sapphire encryption
   ],
   transports: isTestnet ? {
     [sapphireTestnet.id]: sapphireHttpTransport(),
