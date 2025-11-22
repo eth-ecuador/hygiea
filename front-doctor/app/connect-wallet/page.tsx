@@ -1,28 +1,51 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { useConnect, useAccount, useSwitchChain } from "wagmi"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Wallet, Shield, Lock, CheckCircle2, Loader2 } from "lucide-react"
+import { Wallet, Shield, Lock, CheckCircle2, Loader2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export default function ConnectWalletPage() {
-  const [isConnecting, setIsConnecting] = useState(false)
-  const [isConnected, setIsConnected] = useState(false)
+  const router = useRouter()
+  const { connectors, connect, error: connectError, isPending: isConnecting } = useConnect()
+  const { address, isConnected, chain } = useAccount()
+  const { switchChain } = useSwitchChain()
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [hasRedirected, setHasRedirected] = useState(false)
 
-  const handleConnectWallet = async () => {
-    setIsConnecting(true)
-    // Simulate wallet connection
-    setTimeout(() => {
-      setIsConnecting(false)
-      setIsConnected(true)
-      // Redirect after successful connection
+  useEffect(() => {
+    if (isConnected && address && !hasRedirected) {
+      setShowSuccess(true)
+      setHasRedirected(true)
+      
+      // Check if on correct chain (Sapphire Testnet: 0x5aff = 23295)
+      const targetChainId = 0x5aff
+      if (chain?.id !== targetChainId && switchChain) {
+        try {
+          switchChain({ chainId: targetChainId })
+        } catch (error) {
+          console.log('Chain switch error:', error)
+        }
+      }
+      
+      // Redirect after showing success
       setTimeout(() => {
-        // window.location.href = "/dashboard"
-      }, 1500)
-    }, 2000)
+        router.push("/main")
+      }, 2000)
+    }
+  }, [isConnected, address, chain, switchChain, router, hasRedirected])
+
+  const handleConnect = async () => {
+    const injectedConnector = connectors.find(c => c.id === 'injected')
+    if (injectedConnector) {
+      connect({ connector: injectedConnector })
+    }
   }
 
   return (
@@ -146,15 +169,27 @@ export default function ConnectWalletPage() {
                 </div>
 
                 {/* Connect Button */}
-                {!isConnected ? (
+                {!showSuccess ? (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.7 }}
+                    className="space-y-4"
                   >
+                    {/* Error Message */}
+                    {connectError && (
+                      <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                          {connectError.message}
+                        </AlertDescription>
+                      </Alert>
+                    )}
+
+                    {/* Single Connect Button */}
                     <Button
                       size="lg"
-                      onClick={handleConnectWallet}
+                      onClick={handleConnect}
                       disabled={isConnecting}
                       className="w-full bg-gradient-to-r from-[#0B3861] to-[#2B7A9B] text-white hover:from-[#1F4E6F] hover:to-[#0B3861] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl text-lg py-7"
                     >
@@ -171,22 +206,24 @@ export default function ConnectWalletPage() {
                       )}
                     </Button>
 
-                    {/* Supported Wallets */}
-                    <div className="mt-6 text-center">
-                      <p className="text-sm text-[#666666] mb-3">Supported Wallets</p>
-                      <div className="flex justify-center gap-4 flex-wrap">
-                        {["MetaMask", "WalletConnect", "Coinbase Wallet"].map((wallet, index) => (
-                          <motion.div
-                            key={wallet}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                            className="px-4 py-2 rounded-full bg-[#F8FBFC] border border-[#0B3861]/10 text-xs font-medium text-[#0B3861]"
-                          >
-                            {wallet}
-                          </motion.div>
-                        ))}
-                      </div>
+                    {/* Network Info */}
+                    <div className="mt-6 p-4 rounded-lg bg-[#F8FBFC] border border-[#0B3861]/10">
+                      <h4 className="font-semibold text-[#0B3861] mb-2 text-sm">⚠️ Network Required</h4>
+                      <p className="text-xs text-[#666666] mb-2">
+                        You'll be prompted to add Sapphire Testnet to your wallet if you don't have it yet.
+                      </p>
+                      <ul className="text-xs text-[#666666] space-y-1">
+                        <li>• <strong>Network:</strong> Sapphire Testnet</li>
+                        <li>• <strong>Chain ID:</strong> 23295</li>
+                      </ul>
+                      <a
+                        href="https://faucet.testnet.oasis.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-[#2B7A9B] hover:text-[#0B3861] underline mt-2 inline-block"
+                      >
+                        🚰 Get testnet tokens
+                      </a>
                     </div>
                   </motion.div>
                 ) : (
@@ -205,12 +242,13 @@ export default function ConnectWalletPage() {
                       <CheckCircle2 className="h-10 w-10 text-white" />
                     </motion.div>
                     <h3 className="text-2xl font-bold text-[#0B3861] mb-2">Wallet Connected!</h3>
+                    <p className="text-[#666666] mb-2">Address: {address?.slice(0, 6)}...{address?.slice(-4)}</p>
                     <p className="text-[#666666]">Redirecting to your dashboard...</p>
                   </motion.div>
                 )}
 
                 {/* Info Text */}
-                {!isConnected && (
+                {!showSuccess && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

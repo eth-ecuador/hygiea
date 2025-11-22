@@ -2,9 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { Providers } from "@/components/Providers"
 import "./globals.css"
 
-// <CHANGE> Using Inter font as specified in the requirements
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -42,7 +42,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} font-sans antialiased`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Analytics />
       </body>
     </html>

@@ -1,0 +1,674 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "AntecedenteAgregado",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "DatosActualizados",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "EnfermedadAgregada",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "MedicoAutorizado",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "MedicoRegistrado",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "MedicoRevocado",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "PacienteRegistrado",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_nombre",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_edad",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "_direccion",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_telefono",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_email",
+          "type": "string"
+        }
+      ],
+      "name": "actualizarAfiliacion",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "tipo",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "condicion",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "descripcion",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "relacionFamiliar",
+          "type": "string"
+        }
+      ],
+      "name": "agregarAntecedente",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "nombre",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "descripcion",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "gravedad",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tratamiento",
+          "type": "string"
+        }
+      ],
+      "name": "agregarEnfermedad",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "autorizarMedico",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "estaMedicoAutorizado",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "marcarEnfermedadInactiva",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "medicosRegistrados",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerAfiliacion",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "nombre",
+              "type": "string"
+            },
+            {
+              "internalType": "uint8",
+              "name": "edad",
+              "type": "uint8"
+            },
+            {
+              "internalType": "string",
+              "name": "sexo",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "tipoSangre",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "direccion",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "telefono",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "numeroSeguroSocial",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fechaRegistro",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct MedicalRecords.AffiliationData",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerAntecedentes",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "tipo",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "condicion",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "descripcion",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "relacionFamiliar",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fecha",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct MedicalRecords.MedicalHistory[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerEnfermedades",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "nombre",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "descripcion",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fechaDiagnostico",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gravedad",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "activa",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "tratamiento",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct MedicalRecords.Disease[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerEnfermedadesActivas",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "nombre",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "descripcion",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fechaDiagnostico",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gravedad",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "activa",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "tratamiento",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct MedicalRecords.Disease[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerMedicosAutorizados",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerNombreMedico",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "pacienteExiste",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "nombre",
+          "type": "string"
+        }
+      ],
+      "name": "registrarMedico",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pacienteAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_nombre",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_edad",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "_sexo",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_tipoSangre",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_direccion",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_telefono",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_numeroSeguroSocial",
+          "type": "string"
+        }
+      ],
+      "name": "registrarPaciente",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "medico",
+          "type": "address"
+        }
+      ],
+      "name": "revocarMedico",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalPacientes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "address": "0x82F79A62A06f620DD0b7B396D0C19F0b3a5Cf8F5"
+}
