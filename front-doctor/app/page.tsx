@@ -89,7 +89,7 @@ export default function HygeiaLandingPage() {
                   className="bg-[#2ECA77] text-white hover:bg-[#28b567] shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
                   onClick={() => window.location.href = '/connect-wallet'}
                 >
-                  Start Free Trial
+                  Start Trial
                 </Button>
                 <Button
                   size="lg"

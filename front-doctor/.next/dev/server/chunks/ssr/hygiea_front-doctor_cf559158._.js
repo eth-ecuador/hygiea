@@ -394,7 +394,7 @@ function HygeiaLandingPage() {
                                                 size: "lg",
                                                 className: "bg-[#2ECA77] text-white hover:bg-[#28b567] shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl",
                                                 onClick: ()=>window.location.href = '/connect-wallet',
-                                                children: "Start Free Trial"
+                                                children: "Start Trial"
                                             }, void 0, false, {
                                                 fileName: "[project]/hygiea/front-doctor/app/page.tsx",
                                                 lineNumber: 87,
