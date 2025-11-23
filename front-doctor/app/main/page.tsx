@@ -25,6 +25,7 @@ import Link from "next/link"
 // Import components
 import RegisterPatient from "@/components/medical/RegisterPatient"
 import RegisterDoctor from "@/components/medical/RegisterDoctor"
+import AuthorizeDoctor from "@/components/medical/AuthorizeDoctor"
 import ViewRecords from "@/components/medical/ViewRecords"
 import AddDisease from "@/components/medical/AddDisease"
 import ManagePermissions from "@/components/medical/ManagePermissions"
@@ -206,7 +207,10 @@ export default function MainPage() {
               >
                 <TabsContent value="register" className="space-y-6 mt-0">
                   <RegisterPatient />
-                  <RegisterDoctor />
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <RegisterDoctor />
+                    <AuthorizeDoctor />
+                  </div>
                 </TabsContent>
 
                 <TabsContent value="diseases" className="mt-0">

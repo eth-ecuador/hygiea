@@ -1,16 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Database, HardDrive } from 'lucide-react'
 
 export function DepositUSDFC() {
   const { address, isConnected } = useAccount()
   const [amount, setAmount] = useState('0.1')
   const [isDepositing, setIsDepositing] = useState(false)
   const [status, setStatus] = useState<string>('')
+
+  // Calculate approximate storage space
+  // Assuming 1 USDFC ≈ 1 GB of storage (adjust based on actual pricing)
+  const estimatedStorage = useMemo(() => {
+    const amountNum = parseFloat(amount) || 0
+    const storageGB = amountNum * 10 // Approximate: 0.1 USDFC = 1 GB
+    const storageMB = storageGB * 1024
+
+    return {
+      gb: storageGB.toFixed(2),
+      mb: storageMB.toFixed(0),
+      records: Math.floor(storageGB / 0.001) // Assuming ~1MB per patient record
+    }
+  }, [amount])
 
   const depositUSDFC = async () => {
     if (!isConnected || !address) {
@@ -125,6 +140,41 @@ export function DepositUSDFC() {
           <p className="text-xs text-muted-foreground">
             Minimum: 0.06 USDFC. Recommended: 0.1+ USDFC for multiple uploads.
           </p>
+        </div>
+
+        {/* Storage estimation card */}
+        <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <HardDrive className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <h4 className="font-semibold text-sm text-blue-900 dark:text-blue-100">
+              Estimated Storage Capacity
+            </h4>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white/50 dark:bg-black/20 rounded-md p-3">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                {estimatedStorage.gb} GB
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                Total storage
+              </div>
+            </div>
+            <div className="bg-white/50 dark:bg-black/20 rounded-md p-3">
+              <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                ~{estimatedStorage.records}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                Patient records
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 flex items-start gap-2 text-xs text-blue-700 dark:text-blue-300">
+            <Database className="h-4 w-4 flex-shrink-0 mt-0.5" />
+            <p>
+              Each patient record (~1MB) includes encrypted medical data,
+              diseases, history, and documents stored on Filecoin.
+            </p>
+          </div>
         </div>
 
         <Button

@@ -33,7 +33,7 @@ const config = (0, __TURBOPACK__imported__module__$5b$project$5d2f$front$2d$doct
         [__TURBOPACK__imported__module__$5b$project$5d2f$front$2d$doctor$2f$node_modules$2f$viem$2f$_esm$2f$chains$2f$definitions$2f$sapphire$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["sapphire"].id]: (0, __TURBOPACK__imported__module__$5b$project$5d2f$front$2d$doctor$2f$node_modules$2f40$oasisprotocol$2f$sapphire$2d$viem$2d$v2$2f$dist$2f$_esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["sapphireHttpTransport"])()
     }
 });
-const contractAddress = ("TURBOPACK compile-time value", "0xB6b8688E15Dd0d85cD5b7EeF9a09C7E926f6E0F1") || '0x...';
+const contractAddress = ("TURBOPACK compile-time value", "0x280A51476A84ab4340f4eCbf842A5A0165D1E728") || '0x...';
 ;
 const networkConfig = ("TURBOPACK compile-time truthy", 1) ? {
     name: 'Sapphire Testnet',

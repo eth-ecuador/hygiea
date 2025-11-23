@@ -323,16 +323,6 @@ export default function BackupToFilecoin() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Development Mode Notice */}
-      <Alert>
-        <Info className="h-4 w-4" />
-        <AlertTitle>Development Mode</AlertTitle>
-        <AlertDescription>
-          Currently using localStorage for Filecoin simulation. Set NEXT_PUBLIC_USE_SYNAPSE=true
-          for production Filecoin integration.
-        </AlertDescription>
-      </Alert>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle2, Loader2, Circle, Database, Lock, Upload, Link2, FileCheck } from 'lucide-react'
+import { CheckCircle2, Loader2, Circle, Database, Lock, Upload, Link2, FileCheck, ExternalLink } from 'lucide-react'
 import { Card, CardContent } from '../ui/card'
 
 export type RegistrationStep =
@@ -18,6 +18,9 @@ export type RegistrationStep =
 interface RegistrationProgressProps {
   currentStep: RegistrationStep
   patientName?: string
+  transactionHash?: string
+  filecoinCID?: string
+  dataHash?: string
 }
 
 interface Step {
@@ -31,80 +34,79 @@ interface Step {
 const steps: Step[] = [
   {
     id: 'validating',
-    title: 'Validando datos',
-    description: 'Verificando información del paciente',
+    title: 'Validating Data',
+    description: 'Verifying patient information',
     icon: FileCheck,
     color: '#FFB800'
   },
   {
     id: 'connecting',
-    title: 'Conectando a Sapphire',
-    description: 'Estableciendo conexión con blockchain',
+    title: 'Connecting to Sapphire',
+    description: 'Establishing blockchain connection',
     icon: Link2,
     color: '#00A8E8'
   },
   {
     id: 'encrypting',
-    title: 'Encriptando datos',
-    description: 'Protegiendo información con TEE',
+    title: 'Encrypting Data',
+    description: 'Protecting information with TEE',
     icon: Lock,
     color: '#9B59B6'
   },
   {
     id: 'registering',
-    title: 'Registrando en blockchain',
-    description: 'Almacenando registro médico encriptado',
+    title: 'Registering on Blockchain',
+    description: 'Storing encrypted medical record',
     icon: Database,
     color: '#E74C3C'
   },
   {
     id: 'preparing-backup',
-    title: 'Preparando backup',
-    description: 'Organizando datos para Filecoin',
+    title: 'Preparing Backup',
+    description: 'Organizing data for Filecoin',
     icon: FileCheck,
     color: '#3498DB'
   },
   {
     id: 'encrypting-filecoin',
-    title: 'Encriptando para Filecoin',
-    description: 'Segunda capa de encriptación',
+    title: 'Encrypting for Filecoin',
+    description: 'Second layer of encryption',
     icon: Lock,
     color: '#9B59B6'
   },
   {
     id: 'uploading-filecoin',
-    title: 'Subiendo a Filecoin',
-    description: 'Almacenamiento descentralizado permanente',
+    title: 'Uploading to Filecoin',
+    description: 'Permanent decentralized storage',
     icon: Upload,
     color: '#2ECA77'
   },
   {
     id: 'storing-cid',
-    title: 'Guardando CID',
-    description: 'Vinculando Filecoin con blockchain',
+    title: 'Storing CID',
+    description: 'Linking Filecoin with blockchain',
     icon: Link2,
     color: '#00A8E8'
   },
   {
     id: 'completed',
-    title: '¡Completado!',
-    description: 'Paciente registrado exitosamente',
+    title: 'Completed!',
+    description: 'Patient successfully registered',
     icon: CheckCircle2,
     color: '#2ECA77'
   }
 ]
 
-export function RegistrationProgress({ currentStep, patientName }: RegistrationProgressProps) {
+export function RegistrationProgress({ currentStep, patientName, transactionHash, filecoinCID, dataHash }: RegistrationProgressProps) {
   const currentStepIndex = steps.findIndex(step => step.id === currentStep)
 
   return (
     <Card className="border-[#00A8E8] border-2 shadow-xl">
       <CardContent className="pt-6">
         <div className="space-y-6">
-          {/* Header */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-[#0B3861] mb-2">
-              Registrando Paciente
+              Registering Patient
             </h3>
             {patientName && (
               <p className="text-[#666666]">
@@ -113,12 +115,11 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
             )}
           </div>
 
-          {/* Progress Steps */}
           <div className="space-y-3">
             {steps.map((step, index) => {
               const Icon = step.icon
-              const isCompleted = index < currentStepIndex
-              const isCurrent = index === currentStepIndex
+              const isCompleted = index < currentStepIndex || (currentStep === 'completed' && index === currentStepIndex)
+              const isCurrent = index === currentStepIndex && currentStep !== 'completed'
               const isPending = index > currentStepIndex
 
               return (
@@ -135,7 +136,6 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
                       : 'bg-gray-50 border border-gray-200'
                   }`}
                 >
-                  {/* Icon */}
                   <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
                     isCompleted
                       ? 'bg-[#2ECA77]'
@@ -163,7 +163,6 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="flex-1 min-w-0">
                     <h4 className={`font-semibold ${
                       isCurrent ? 'text-[#0B3861]' : isCompleted ? 'text-[#2ECA77]' : 'text-gray-500'
@@ -176,7 +175,6 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
                       {step.description}
                     </p>
 
-                    {/* Progress bar for current step */}
                     {isCurrent && (
                       <motion.div
                         className="mt-2 h-1 bg-gray-200 rounded-full overflow-hidden"
@@ -193,7 +191,6 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
                     )}
                   </div>
 
-                  {/* Status indicator */}
                   <div className="flex-shrink-0">
                     {isCurrent && (
                       <motion.div
@@ -209,10 +206,9 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
             })}
           </div>
 
-          {/* Overall Progress */}
           <div className="mt-6">
             <div className="flex justify-between text-sm text-[#666666] mb-2">
-              <span>Progreso general</span>
+              <span>Overall Progress</span>
               <span className="font-semibold">
                 {Math.round((currentStepIndex / (steps.length - 1)) * 100)}%
               </span>
@@ -227,7 +223,6 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
             </div>
           </div>
 
-          {/* Filecoin Info Banner */}
           {currentStepIndex >= 4 && currentStepIndex < steps.length - 1 && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -240,12 +235,12 @@ export function RegistrationProgress({ currentStep, patientName }: RegistrationP
                 </div>
                 <div>
                   <h5 className="font-semibold text-[#0B3861] mb-1">
-                    Backup en Filecoin
+                    Filecoin Backup
                   </h5>
                   <p className="text-sm text-[#666666]">
-                    Los datos se están respaldando de forma automática en Filecoin,
-                    una red de almacenamiento descentralizado. Esto garantiza la
-                    permanencia y disponibilidad de los registros médicos.
+                    Data is being automatically backed up on Filecoin,
+                    a decentralized storage network. This ensures the
+                    permanence and availability of medical records.
                   </p>
                 </div>
               </div>

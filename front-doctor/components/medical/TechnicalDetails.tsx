@@ -43,7 +43,7 @@ export function TechnicalDetails({
             <div className="flex items-center gap-2">
               <Code className="h-5 w-5 text-[#0B3861]" />
               <span className="font-semibold text-[#0B3861]">
-                Detalles Técnicos
+                Technical Details
               </span>
             </div>
             {isExpanded ? (
@@ -79,7 +79,7 @@ export function TechnicalDetails({
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex-shrink-0 text-[#00A8E8] hover:text-[#0B3861] transition-colors"
-                          title="Ver en explorador"
+                          title="View on explorer"
                         >
                           <ExternalLink className="h-4 w-4" />
                         </a>
@@ -91,7 +91,7 @@ export function TechnicalDetails({
                   {blockNumber && (
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="text-xs font-semibold text-gray-600 mb-1">
-                        Bloque
+                        Block
                       </p>
                       <code className="text-xs font-mono text-[#0B3861]">
                         #{blockNumber}
@@ -103,7 +103,7 @@ export function TechnicalDetails({
                   {dataHash && (
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="text-xs font-semibold text-gray-600 mb-1">
-                        Hash de Datos (SHA-256)
+                        Data Hash (SHA-256)
                       </p>
                       <code className="text-xs font-mono text-[#0B3861] break-all">
                         {dataHash}
@@ -126,13 +126,13 @@ export function TechnicalDetails({
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex-shrink-0 text-[#00A8E8] hover:text-[#0B3861] transition-colors"
-                          title="Ver en Filscan"
+                          title="View on Filscan"
                         >
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       </div>
                       <p className="text-xs text-gray-600 mt-2">
-                        Los datos están almacenados de forma permanente en la red Filecoin
+                        Data is permanently stored on the Filecoin network
                       </p>
                     </div>
                   )}
@@ -140,9 +140,9 @@ export function TechnicalDetails({
                   {/* Info Banner */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                     <p className="text-xs text-gray-700">
-                      <span className="font-semibold">Seguridad:</span> Todos los datos
-                      están encriptados mediante Sapphire TEE antes de almacenarse
-                      en blockchain y Filecoin.
+                      <span className="font-semibold">Security:</span> All data
+                      is encrypted using Sapphire TEE before being stored
+                      on blockchain and Filecoin.
                     </p>
                   </div>
                 </div>

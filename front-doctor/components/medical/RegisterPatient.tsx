@@ -196,6 +196,9 @@ export default function RegisterPatient() {
         <RegistrationProgress
           currentStep={currentStep}
           patientName={formData.nombre}
+          transactionHash={hash}
+          filecoinCID={filecoinCID}
+          dataHash={dataHash}
         />
 
         {/* Technical Details */}
@@ -225,11 +228,11 @@ export default function RegisterPatient() {
                     <CheckCircle2 className="h-8 w-8 text-white" />
                   </motion.div>
                   <h3 className="text-xl font-bold text-[#0B3861] mb-2">
-                    ¡Registro Completo!
+                    Registration Complete!
                   </h3>
                   <p className="text-[#666666] mb-4">
-                    El registro médico ha sido creado exitosamente en blockchain
-                    y respaldado en Filecoin
+                    Medical record has been successfully created on blockchain
+                    and backed up on Filecoin
                   </p>
                   <Button
                     onClick={() => {
@@ -251,7 +254,7 @@ export default function RegisterPatient() {
                     }}
                     className="bg-[#0B3861] hover:bg-[#1F4E6F]"
                   >
-                    Registrar Otro Paciente
+                    Register Another Patient
                   </Button>
                 </div>
               </CardContent>
