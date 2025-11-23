@@ -10,14 +10,16 @@ export const config = createConfig({
   connectors: [
     injectedWithSapphire(), // Auto-detects all injected wallets (MetaMask, Rabby, etc.) with Sapphire encryption
   ],
-  transports: isTestnet ? {
+  transports: {
     [sapphireTestnet.id]: sapphireHttpTransport(),
-  } : {
     [sapphire.id]: sapphireHttpTransport(),
   },
 });
 
 export const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0x...';
+
+// Export sapphireTestnet for use in API routes
+export { sapphireTestnet };
 
 export const networkConfig = isTestnet ? {
   name: 'Sapphire Testnet',

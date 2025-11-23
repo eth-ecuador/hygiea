@@ -4,22 +4,22 @@
   },
   "devFiles": [],
   "polyfillFiles": [
-    "static/chunks/b36f1_next_dist_build_polyfills_polyfill-nomodule.js"
+    "static/chunks/857f8_next_dist_build_polyfills_polyfill-nomodule.js"
   ],
   "lowPriorityFiles": [
     "static/development/_ssgManifest.js",
     "static/development/_buildManifest.js"
   ],
   "rootMainFiles": [
-    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_af12980b._.js",
-    "static/chunks/b36f1_next_dist_compiled_react-dom_62b62c17._.js",
-    "static/chunks/b36f1_next_dist_compiled_react-server-dom-turbopack_d5d86359._.js",
-    "static/chunks/b36f1_next_dist_compiled_next-devtools_index_c60ddddd.js",
-    "static/chunks/b36f1_next_dist_compiled_f2cf641b._.js",
-    "static/chunks/b36f1_next_dist_client_27b4074a._.js",
-    "static/chunks/b36f1_next_dist_5875902d._.js",
-    "static/chunks/b36f1_@swc_helpers_cjs_56b0dc97._.js",
-    "static/chunks/hygiea_front-doctor_a0ff3932._.js",
-    "static/chunks/turbopack-hygiea_front-doctor_64559807._.js"
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_0d6045da._.js",
+    "static/chunks/857f8_next_dist_compiled_react-dom_48721118._.js",
+    "static/chunks/857f8_next_dist_compiled_react-server-dom-turbopack_a380ae0a._.js",
+    "static/chunks/857f8_next_dist_compiled_next-devtools_index_5350fe5c.js",
+    "static/chunks/857f8_next_dist_compiled_40a38097._.js",
+    "static/chunks/857f8_next_dist_client_eb235122._.js",
+    "static/chunks/857f8_next_dist_d641f835._.js",
+    "static/chunks/857f8_@swc_helpers_cjs_b3d2d0a7._.js",
+    "static/chunks/front-doctor_a0ff3932._.js",
+    "static/chunks/turbopack-front-doctor_f31b09c8._.js"
   ]
 }

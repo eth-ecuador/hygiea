@@ -48,6 +48,43 @@
           "type": "address"
         },
         {
+          "indexed": true,
+          "internalType": "address",
+          "name": "doctor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "cid",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "documentType",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "DocumentoAgregado",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
           "indexed": false,
           "internalType": "uint256",
           "name": "timestamp",
@@ -208,6 +245,39 @@
         },
         {
           "internalType": "string",
+          "name": "_cid",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_recordHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_documentType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "agregarDocumentoMedico",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
           "name": "nombre",
           "type": "string"
         },
@@ -236,6 +306,34 @@
       "inputs": [
         {
           "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_cid",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_recordHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "almacenarCIDFilecoin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
           "name": "medico",
           "type": "address"
         }
@@ -243,6 +341,54 @@
       "name": "autorizarMedico",
       "outputs": [],
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "encriptarRegistroPaciente",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "encryptedData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "dataHash",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "encriptarRegistroPacienteAutoSync",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "encryptedData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "dataHash",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -411,6 +557,123 @@
             }
           ],
           "internalType": "struct MedicalRecords.MedicalHistory[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "obtenerDocumentoPorIndice",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "cid",
+              "type": "string"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "recordHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "doctorId",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "documentType",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "exists",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct MedicalRecords.MedicalDocument",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "obtenerDocumentosMedicos",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "cid",
+              "type": "string"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "recordHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "doctorId",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "documentType",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "exists",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct MedicalRecords.MedicalDocument[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -657,6 +920,25 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        }
+      ],
+      "name": "totalDocumentos",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "totalPacientes",
       "outputs": [
@@ -668,7 +950,36 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "paciente",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "providedHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "verificarIntegridadDocumento",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "address": "0x82F79A62A06f620DD0b7B396D0C19F0b3a5Cf8F5"
+  "address": "0xB6b8688E15Dd0d85cD5b7EeF9a09C7E926f6E0F1"
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { useWriteContract, useWaitForTransactionReceipt, useAccount } from 'wagmi'
 import { getAddress } from 'ethers'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -36,12 +36,16 @@ export default function RegisterPatient() {
   const [filecoinCID, setFilecoinCID] = useState<string>('')
   const [dataHash, setDataHash] = useState<string>('')
 
+  // Get connected wallet address
+  const { address: userAddress } = useAccount()
+
   const { writeContract, data: hash, isPending, error } = useWriteContract()
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash })
 
   // Auto-sync to Filecoin with progress tracking
   useAutoFilecoinSync({
     enabled: true,
+    callerAddress: userAddress,
     onProgress: (step: string, details?: any) => {
       console.log('Filecoin progress:', step, details)
 
@@ -56,28 +60,38 @@ export default function RegisterPatient() {
       // Map Filecoin steps to our progress steps
       switch(step) {
         case 'encrypting':
+          console.log('🎯 UI: Cambiando a encrypting-filecoin')
           setCurrentStep('encrypting-filecoin')
           break
         case 'encrypted':
+          console.log('🎯 UI: Datos encriptados')
           // Stay on encrypting-filecoin, data is ready
           if (details?.dataHash) {
             setDataHash(details.dataHash)
           }
           break
         case 'preparing-backup':
+          console.log('🎯 UI: Cambiando a preparing-backup')
           setCurrentStep('preparing-backup')
           break
         case 'uploading':
+          console.log('🎯 UI: Cambiando a uploading-filecoin')
           setCurrentStep('uploading-filecoin')
           break
         case 'storing-cid':
+          console.log('🎯 UI: Cambiando a storing-cid')
           setCurrentStep('storing-cid')
           break
         case 'completed':
+          console.log('🎯 UI: COMPLETADO - Cambiando a completed')
+          console.log('🎯 UI: CID recibido:', details?.cid)
           setCurrentStep('completed')
           setFilecoinCompleted(true)
           if (details?.cid) {
             setFilecoinCID(details.cid)
+          }
+          if (details?.transactionHash) {
+            console.log('🎯 UI: Transaction hash:', details.transactionHash)
           }
           break
       }
@@ -104,7 +118,8 @@ export default function RegisterPatient() {
     } else if (isConfirming) {
       setCurrentStep('registering')
     } else if (isSuccess && !filecoinCompleted) {
-      setCurrentStep('preparing-backup')
+      // Don't set step here - let the Filecoin hook handle it
+      console.log('✅ Blockchain registration successful, waiting for Filecoin sync...')
     }
   }, [isPending, isConfirming, isSuccess, filecoinCompleted])
 

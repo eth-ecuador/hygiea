@@ -1,0 +1,8 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/encrypt-patient-record/route": "/api/encrypt-patient-record",
+  "/connect-wallet/page": "/connect-wallet",
+  "/main/page": "/main",
+  "/page": "/"
+}

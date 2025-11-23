@@ -1,0 +1,3 @@
+{
+  "/api/encrypt-patient-record/route": "app/api/encrypt-patient-record/route.js"
+}

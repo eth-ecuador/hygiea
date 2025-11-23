@@ -7,16 +7,17 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  UserPlus, 
-  Stethoscope, 
-  ClipboardList, 
-  FileHeart, 
-  Eye, 
-  Shield, 
+import {
+  UserPlus,
+  Stethoscope,
+  ClipboardList,
+  FileHeart,
+  Eye,
+  Shield,
   Lock,
   LogOut,
-  Home
+  Home,
+  Database
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -28,6 +29,9 @@ import ViewRecords from "@/components/medical/ViewRecords"
 import AddDisease from "@/components/medical/AddDisease"
 import ManagePermissions from "@/components/medical/ManagePermissions"
 import AddHistory from "@/components/medical/AddHistory"
+import BackupToFilecoin from "@/components/medical/BackupToFilecoin"
+import { DepositUSDFC } from "@/components/medical/DepositUSDFC"
+import { useAutoFilecoinSync } from "@/hooks/useAutoFilecoinSync"
 
 export default function MainPage() {
   const [activeTab, setActiveTab] = useState("register")
@@ -35,6 +39,18 @@ export default function MainPage() {
   const { disconnect } = useDisconnect()
   const router = useRouter()
   const [isChecking, setIsChecking] = useState(true)
+
+  // 🚀 Auto-sync to Filecoin when patient data changes
+  useAutoFilecoinSync({
+    enabled: isConnected,
+    callerAddress: address, // Pass the connected wallet address for authorization
+    onSuccess: (cid) => {
+      console.log('✅ Automatic Filecoin sync successful:', cid)
+    },
+    onError: (error) => {
+      console.error('❌ Automatic Filecoin sync failed:', error)
+    },
+  })
 
   // Redirect to connect-wallet if not connected (only once on mount)
   useEffect(() => {
@@ -66,6 +82,7 @@ export default function MainPage() {
     { id: "register", label: "Register", icon: UserPlus },
     { id: "diseases", label: "Diseases", icon: Stethoscope },
     { id: "history", label: "History", icon: ClipboardList },
+    { id: "filecoin", label: "Filecoin Backup", icon: Database },
     { id: "view", label: "View Records", icon: Eye },
     { id: "permissions", label: "Permissions", icon: Lock },
   ]
@@ -163,7 +180,7 @@ export default function MainPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 bg-transparent h-auto p-0">
+            <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 bg-transparent h-auto p-0">
               {tabs.map((tab) => {
                 const Icon = tab.icon
                 return (
@@ -198,6 +215,13 @@ export default function MainPage() {
 
                 <TabsContent value="history" className="mt-0">
                   <AddHistory />
+                </TabsContent>
+
+                <TabsContent value="filecoin" className="mt-0">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <DepositUSDFC />
+                    <BackupToFilecoin />
+                  </div>
                 </TabsContent>
 
                 <TabsContent value="view" className="mt-0">
