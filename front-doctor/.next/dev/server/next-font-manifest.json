@@ -1,12 +1,12 @@
 {
   "app": {
-    "[project]/hygiea/front-doctor/app/connect-wallet/page": [
+    "[project]/front-doctor/app/connect-wallet/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
     ],
-    "[project]/hygiea/front-doctor/app/main/page": [
+    "[project]/front-doctor/app/main/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
     ],
-    "[project]/hygiea/front-doctor/app/page": [
+    "[project]/front-doctor/app/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
     ]
   },

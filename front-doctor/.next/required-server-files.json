@@ -91,6 +91,7 @@
     "compiler": {},
     "expireTime": 31536000,
     "staticPageGenerationTimeout": 60,
+    "output": "export",
     "modularizeImports": {
       "@mui/icons-material": {
         "transform": "@mui/icons-material/{{member}}"
@@ -99,7 +100,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\florg\\Music\\eth-global",
+    "outputFileTracingRoot": "C:\\Users\\florg\\OneDrive\\Desktop\\fodler-test\\hygiea",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -289,12 +290,12 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
     "turbopack": {
-      "root": "C:\\Users\\florg\\Music\\eth-global"
+      "root": "C:\\Users\\florg\\OneDrive\\Desktop\\fodler-test\\hygiea"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\florg\\Music\\eth-global\\hygiea\\front-doctor",
-  "relativeAppDir": "hygiea\\front-doctor",
+  "appDir": "C:\\Users\\florg\\OneDrive\\Desktop\\fodler-test\\hygiea\\front-doctor",
+  "relativeAppDir": "front-doctor",
   "files": [
     ".next\\routes-manifest.json",
     ".next\\server\\pages-manifest.json",

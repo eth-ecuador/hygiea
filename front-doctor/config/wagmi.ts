@@ -1,4 +1,4 @@
-import { createConfig } from 'wagmi';
+import { createConfig, http } from 'wagmi';
 import { sapphire, sapphireTestnet } from 'wagmi/chains';
 import { injectedWithSapphire, sapphireHttpTransport } from '@oasisprotocol/sapphire-wagmi-v2';
 
@@ -15,6 +15,7 @@ export const config = createConfig({
   } : {
     [sapphire.id]: sapphireHttpTransport(),
   },
+  multiInjectedProviderDiscovery: false,
 });
 
 export const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0x...';

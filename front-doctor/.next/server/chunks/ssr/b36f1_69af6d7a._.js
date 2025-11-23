@@ -1,3 +1,0 @@
-module.exports=[80620,(a,b,c)=>{"use strict";b.exports=a.r(94786).vendored["react-ssr"].ReactDOM},6676,13816,a=>{"use strict";var b=a.i(92553);let c=(0,b.default)("Stethoscope",[["path",{d:"M11 2v2",key:"1539x4"}],["path",{d:"M5 2v2",key:"1yf1q8"}],["path",{d:"M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1",key:"rb5t3r"}],["path",{d:"M8 15a6 6 0 0 0 12 0v-3",key:"x18d4x"}],["circle",{cx:"20",cy:"10",r:"2",key:"ts1r5v"}]]);a.s(["Stethoscope",()=>c],6676);let d=(0,b.default)("Check",[["path",{d:"M20 6 9 17l-5-5",key:"1gmf2c"}]]);a.s(["default",()=>d],13816)}];
-
-//# sourceMappingURL=b36f1_69af6d7a._.js.map
