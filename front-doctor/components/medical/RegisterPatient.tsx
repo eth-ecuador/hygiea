@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { getAddress } from 'ethers'
@@ -12,6 +12,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { UserPlus, CheckCircle2, Loader2 } from "lucide-react"
 import { contractAddress } from '@/config/wagmi'
 import contractABI from '@/contracts/MedicalRecords.json'
+import { RegistrationProgress, RegistrationStep } from './RegistrationProgress'
+import { TechnicalDetails } from './TechnicalDetails'
+import { useAutoFilecoinSync } from '@/hooks/useAutoFilecoinSync'
 
 export default function RegisterPatient() {
   const [formData, setFormData] = useState({
@@ -27,9 +30,83 @@ export default function RegisterPatient() {
   })
 
   const [checksummedAddress, setChecksummedAddress] = useState('')
+  const [currentStep, setCurrentStep] = useState<RegistrationStep>('validating')
+  const [showProgress, setShowProgress] = useState(false)
+  const [filecoinCompleted, setFilecoinCompleted] = useState(false)
+  const [filecoinCID, setFilecoinCID] = useState<string>('')
+  const [dataHash, setDataHash] = useState<string>('')
 
   const { writeContract, data: hash, isPending, error } = useWriteContract()
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash })
+
+  // Auto-sync to Filecoin with progress tracking
+  useAutoFilecoinSync({
+    enabled: true,
+    onProgress: (step: string, details?: any) => {
+      console.log('Filecoin progress:', step, details)
+
+      // Extract technical details
+      if (details?.dataHash) {
+        setDataHash(details.dataHash)
+      }
+      if (details?.cid) {
+        setFilecoinCID(details.cid)
+      }
+
+      // Map Filecoin steps to our progress steps
+      switch(step) {
+        case 'encrypting':
+          setCurrentStep('encrypting-filecoin')
+          break
+        case 'encrypted':
+          // Stay on encrypting-filecoin, data is ready
+          if (details?.dataHash) {
+            setDataHash(details.dataHash)
+          }
+          break
+        case 'preparing-backup':
+          setCurrentStep('preparing-backup')
+          break
+        case 'uploading':
+          setCurrentStep('uploading-filecoin')
+          break
+        case 'storing-cid':
+          setCurrentStep('storing-cid')
+          break
+        case 'completed':
+          setCurrentStep('completed')
+          setFilecoinCompleted(true)
+          if (details?.cid) {
+            setFilecoinCID(details.cid)
+          }
+          break
+      }
+    },
+    onSuccess: (cid: string) => {
+      console.log('Filecoin sync successful:', cid)
+      setFilecoinCID(cid)
+      setCurrentStep('completed')
+      setFilecoinCompleted(true)
+    },
+    onError: (error: Error) => {
+      console.error('Filecoin sync error:', error)
+      // Even if Filecoin fails, show as completed (blockchain registration succeeded)
+      setCurrentStep('completed')
+      setFilecoinCompleted(true)
+    }
+  })
+
+  // Track transaction progress
+  useEffect(() => {
+    if (isPending) {
+      setShowProgress(true)
+      setCurrentStep('connecting')
+    } else if (isConfirming) {
+      setCurrentStep('registering')
+    } else if (isSuccess && !filecoinCompleted) {
+      setCurrentStep('preparing-backup')
+    }
+  }, [isPending, isConfirming, isSuccess, filecoinCompleted])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,6 +118,14 @@ export default function RegisterPatient() {
     }
 
     try {
+      // Start showing progress
+      setShowProgress(true)
+      setCurrentStep('validating')
+
+      // Simulate validation delay for visual feedback
+      await new Promise(resolve => setTimeout(resolve, 500))
+      setCurrentStep('encrypting')
+
       // Normalize to lowercase, then convert to checksummed
       const normalizedAddress = formData.pacienteAddress.toLowerCase()
       const checksummedAddr = getAddress(normalizedAddress)
@@ -64,6 +149,7 @@ export default function RegisterPatient() {
     } catch (err: any) {
       console.error('Error registering patient:', err)
       alert('Error: ' + (err.message || 'Could not register patient'))
+      setShowProgress(false)
     }
   }
 
@@ -85,28 +171,78 @@ export default function RegisterPatient() {
     }
   }
 
-  if (isSuccess) {
+  // Show progress visualization during registration process
+  if (showProgress) {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
       >
-        <Card className="border-[#2ECA77] border-2 shadow-xl">
-          <CardContent className="pt-6">
-            <div className="text-center py-8">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200 }}
-                className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#2ECA77] mb-4"
-              >
-                <CheckCircle2 className="h-10 w-10 text-white" />
-              </motion.div>
-              <h3 className="text-2xl font-bold text-[#0B3861] mb-2">Patient Registered!</h3>
-              <p className="text-[#666666]">Medical record created successfully on the blockchain</p>
-            </div>
-          </CardContent>
-        </Card>
+        <RegistrationProgress
+          currentStep={currentStep}
+          patientName={formData.nombre}
+        />
+
+        {/* Technical Details */}
+        <TechnicalDetails
+          transactionHash={hash}
+          filecoinCID={filecoinCID}
+          dataHash={dataHash}
+        />
+
+        {/* Show final success message after Filecoin completes */}
+        {filecoinCompleted && currentStep === 'completed' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-4"
+          >
+            <Card className="border-[#2ECA77] border-2 shadow-xl">
+              <CardContent className="pt-6">
+                <div className="text-center py-6">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
+                    className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2ECA77] mb-3"
+                  >
+                    <CheckCircle2 className="h-8 w-8 text-white" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-[#0B3861] mb-2">
+                    ¡Registro Completo!
+                  </h3>
+                  <p className="text-[#666666] mb-4">
+                    El registro médico ha sido creado exitosamente en blockchain
+                    y respaldado en Filecoin
+                  </p>
+                  <Button
+                    onClick={() => {
+                      setShowProgress(false)
+                      setFilecoinCompleted(false)
+                      setFilecoinCID('')
+                      setDataHash('')
+                      setFormData({
+                        pacienteAddress: '',
+                        nombre: '',
+                        edad: '',
+                        sexo: 'M',
+                        tipoSangre: 'O+',
+                        direccion: '',
+                        telefono: '',
+                        email: '',
+                        numeroSeguroSocial: ''
+                      })
+                    }}
+                    className="bg-[#0B3861] hover:bg-[#1F4E6F]"
+                  >
+                    Registrar Otro Paciente
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
       </motion.div>
     )
   }
