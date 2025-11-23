@@ -21,7 +21,7 @@ export default function RegisterDoctor() {
   if (isSuccess) {
     return (
       <div className="card">
-        <h2>✅ Doctor Registered</h2>
+        <h2>Doctor Registered</h2>
         <p>You can now be authorized by patients to access their records.</p>
       </div>
     );
@@ -29,7 +29,7 @@ export default function RegisterDoctor() {
 
   return (
     <div className="card">
-      <h2>👨‍⚕️ Register Doctor</h2>
+      <h2>Register Doctor</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label>Doctor Name *</label>
@@ -42,7 +42,7 @@ export default function RegisterDoctor() {
           />
         </div>
         <button type="submit" className="button secondary" disabled={isPending || isConfirming}>
-          {isPending || isConfirming ? '⏳ Processing...' : 'Register as Doctor'}
+          {isPending || isConfirming ? 'Processing...' : 'Register as Doctor'}
         </button>
       </form>
     </div>

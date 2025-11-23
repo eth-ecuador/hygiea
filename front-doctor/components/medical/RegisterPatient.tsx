@@ -141,7 +141,7 @@ export default function RegisterPatient() {
               <p className="text-xs text-[#666666]">The blockchain address of the patient</p>
               {checksummedAddress && checksummedAddress !== formData.pacienteAddress && (
                 <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
-                  <p className="text-xs font-semibold text-blue-900 mb-1">✓ Checksummed format:</p>
+                  <p className="text-xs font-semibold text-blue-900 mb-1">Checksummed format:</p>
                   <p className="text-xs font-mono text-blue-700 break-all">{checksummedAddress}</p>
                   <p className="text-xs text-blue-600 mt-1">This format will be used automatically</p>
                 </div>

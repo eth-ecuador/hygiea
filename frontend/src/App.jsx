@@ -22,7 +22,7 @@ function MainApp() {
     return (
       <div className="container">
         <header className="header">
-          <h1>🏥 Confidential Medical Records System</h1>
+          <h1>Confidential Medical Records System</h1>
           <p className="subtitle">Powered by Oasis Sapphire - Encrypted data on blockchain</p>
         </header>
         <ConnectWallet />
@@ -39,7 +39,7 @@ function MainApp() {
   return (
     <div className="container">
       <header className="header">
-        <h1>🏥 Confidential Medical Records</h1>
+        <h1>Confidential Medical Records</h1>
         <p className="subtitle">Connected: {address}</p>
         <p className="network-badge">{networkConfig.name}</p>
       </header>
@@ -49,37 +49,37 @@ function MainApp() {
           className={activeTab === 'register' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('register')}
         >
-          📋 Register
+          Register
         </button>
         <button
           className={activeTab === 'diseases' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('diseases')}
         >
-          🩺 Diseases
+          Diseases
         </button>
         <button
           className={activeTab === 'history' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('history')}
         >
-          📚 History
+          History
         </button>
         <button
           className={activeTab === 'view' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('view')}
         >
-          👁️ View Records
+          View Records
         </button>
         <button
           className={activeTab === 'permissions' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('permissions')}
         >
-          🔐 Permissions
+          Permissions
         </button>
         <button
           className={activeTab === 'encryption' ? 'tab active' : 'tab'}
           onClick={() => setActiveTab('encryption')}
         >
-          🔍 View Encryption
+          View Encryption
         </button>
       </nav>
 
@@ -98,8 +98,8 @@ function MainApp() {
       </main>
 
       <footer className="footer">
-        <p>🔒 All data is encrypted on Sapphire blockchain</p>
-        <p>⚠️ {networkConfig.name === 'Sapphire Testnet' ?
+        <p>All data is encrypted on Sapphire blockchain</p>
+        <p>{networkConfig.name === 'Sapphire Testnet' ?
           'TESTNET - Confidentiality NOT guaranteed' :
           'Confidentiality ACTIVE'}</p>
       </footer>

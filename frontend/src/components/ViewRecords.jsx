@@ -30,7 +30,7 @@ export default function ViewRecords() {
 
   return (
     <div className="card">
-      <h2>👁️ View Medical Records</h2>
+      <h2>View Medical Records</h2>
 
       <div className="form-group">
         <label>Patient Address</label>
@@ -44,11 +44,11 @@ export default function ViewRecords() {
       </div>
 
       {loadingAfiliacion ? (
-        <p>⏳ Loading data...</p>
+        <p>Loading data...</p>
       ) : afiliacion ? (
         <>
           <div className="record-section">
-            <h3>📋 Registration Data</h3>
+            <h3>Registration Data</h3>
             <div className="data-grid">
               <div><strong>Name:</strong> {afiliacion.nombre}</div>
               <div><strong>Age:</strong> {afiliacion.edad?.toString()}</div>
@@ -62,13 +62,13 @@ export default function ViewRecords() {
           </div>
 
           <div className="record-section">
-            <h3>🩺 Diseases</h3>
+            <h3>Diseases</h3>
             {loadingEnfermedades ? (
               <p>Loading...</p>
             ) : enfermedades && enfermedades.length > 0 ? (
               enfermedades.map((enfermedad, index) => (
                 <div key={index} className="record-item">
-                  <h4>{enfermedad.nombre} {enfermedad.activa ? '🟢' : '⚪'}</h4>
+                  <h4>{enfermedad.nombre} {enfermedad.activa ? 'Active' : 'Inactive'}</h4>
                   <p><strong>Severity:</strong> {enfermedad.gravedad}</p>
                   <p><strong>Description:</strong> {enfermedad.descripcion}</p>
                   <p><strong>Treatment:</strong> {enfermedad.tratamiento}</p>
@@ -81,7 +81,7 @@ export default function ViewRecords() {
           </div>
 
           <div className="record-section">
-            <h3>📚 Medical History</h3>
+            <h3>Medical History</h3>
             {loadingAntecedentes ? (
               <p>Loading...</p>
             ) : antecedentes && antecedentes.length > 0 ? (
@@ -98,7 +98,7 @@ export default function ViewRecords() {
           </div>
         </>
       ) : (
-        <p>⚠️ No record found or you don't have permission to view this data</p>
+        <p>No record found or you don't have permission to view this data</p>
       )}
     </div>
   );

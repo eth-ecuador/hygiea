@@ -9,7 +9,6 @@ export default function ViewEncryptedData() {
   const [showRawData, setShowRawData] = useState(false);
   const [rawStorageData, setRawStorageData] = useState(null);
 
-  // Read decrypted data (normal)
   const { data: decryptedData } = useReadContract({
     address: contractAddress,
     abi: contractABI.abi,
@@ -18,18 +17,14 @@ export default function ViewEncryptedData() {
     enabled: !!address,
   });
 
-  // Function to get RAW storage data (encrypted)
   const fetchRawStorage = async () => {
     if (!address) return;
 
     try {
-      // Get the provider without the Sapphire wrapper
       const provider = new sapphire.wrap.ethers.providers.JsonRpcProvider(
         'https://testnet.sapphire.oasis.io'
       );
 
-      // Read storage slots directly (these will be encrypted)
-      // Slot 0: patient mapping
       const patientSlot = sapphire.keccak256(
         sapphire.concat([
           sapphire.zeroPadValue(address, 32),
@@ -56,7 +51,7 @@ export default function ViewEncryptedData() {
   if (!address) {
     return (
       <div className="card">
-        <h2>🔍 View Encrypted Data</h2>
+        <h2>View Encrypted Data</h2>
         <p>Connect your wallet to see the comparison between encrypted and decrypted data.</p>
       </div>
     );
@@ -64,7 +59,7 @@ export default function ViewEncryptedData() {
 
   return (
     <div className="card">
-      <h2>🔍 Encryption Verification</h2>
+      <h2>Encryption Verification</h2>
       <p className="info-text">
         Sapphire automatically encrypts all data in the contract storage using TEE (Trusted Execution Environment).
         Here you can see the difference between encrypted and decrypted data.
@@ -75,12 +70,12 @@ export default function ViewEncryptedData() {
           onClick={() => setShowRawData(!showRawData)}
           style={{ marginRight: '10px' }}
         >
-          {showRawData ? '🔒 Hide Comparison' : '🔓 Show Encryption Comparison'}
+          {showRawData ? 'Hide Comparison' : 'Show Encryption Comparison'}
         </button>
 
         {showRawData && (
           <button onClick={fetchRawStorage}>
-            🔄 Refresh Raw Storage
+            Refresh Raw Storage
           </button>
         )}
       </div>
@@ -95,7 +90,7 @@ export default function ViewEncryptedData() {
             marginBottom: '15px'
           }}>
             <h3 style={{ color: '#2e7d32', marginTop: 0 }}>
-              ✅ Decrypted Data (what YOU see)
+              Decrypted Data (what YOU see)
             </h3>
             <p style={{ fontSize: '14px', color: '#555' }}>
               Sapphire automatically decrypts when YOU (the owner) access your data:
@@ -131,7 +126,7 @@ export default function ViewEncryptedData() {
             borderRadius: '8px'
           }}>
             <h3 style={{ color: '#c62828', marginTop: 0 }}>
-              🔒 Encrypted Data (what's on blockchain)
+              Encrypted Data (what's on blockchain)
             </h3>
             <p style={{ fontSize: '14px', color: '#555' }}>
               This is how your data looks stored on the blockchain (unreadable without authorization):
@@ -155,7 +150,7 @@ export default function ViewEncryptedData() {
                   marginTop: '10px',
                   fontWeight: 'bold'
                 }}>
-                  ⚠️ These hexadecimal values are completely encrypted.
+                  These hexadecimal values are completely encrypted.
                   Without access to Sapphire's TEE, they are impossible to decrypt.
                 </p>
               </div>
@@ -175,7 +170,7 @@ export default function ViewEncryptedData() {
             borderLeft: '4px solid #1976d2'
           }}>
             <h4 style={{ marginTop: 0, color: '#1565c0' }}>
-              💡 How does encryption work?
+              How does encryption work?
             </h4>
             <ul style={{ fontSize: '14px', color: '#333', lineHeight: '1.6' }}>
               <li>

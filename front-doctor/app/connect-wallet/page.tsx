@@ -24,7 +24,6 @@ export default function ConnectWalletPage() {
       setShowSuccess(true)
       setHasRedirected(true)
       
-      // Check if on correct chain (Sapphire Testnet: 0x5aff = 23295)
       const targetChainId = 0x5aff
       if (chain?.id !== targetChainId && switchChain) {
         try {
@@ -34,7 +33,6 @@ export default function ConnectWalletPage() {
         }
       }
       
-      // Redirect after showing success
       setTimeout(() => {
         router.push("/main")
       }, 2000)
@@ -89,7 +87,7 @@ export default function ConnectWalletPage() {
             </Link>
             <Link href="/">
               <Button variant="ghost" className="text-[#0B3861] hover:text-[#2B7A9B]">
-                ← Back to Home
+                Back to Home
               </Button>
             </Link>
           </div>
@@ -199,7 +197,7 @@ export default function ConnectWalletPage() {
 
                     {/* Network Info */}
                     <div className="mt-6 p-4 rounded-lg bg-[#F8FBFC] border border-[#0B3861]/10">
-                      <h4 className="font-semibold text-[#0B3861] mb-2 text-sm">⚠️ Network Required</h4>
+                      <h4 className="font-semibold text-[#0B3861] mb-2 text-sm">Network Required</h4>
                       <p className="text-xs text-[#666666] mb-2">
                         You'll be prompted to add Sapphire Testnet to your wallet if you don't have it yet.
                       </p>
@@ -213,7 +211,7 @@ export default function ConnectWalletPage() {
                         rel="noopener noreferrer"
                         className="text-xs text-[#2B7A9B] hover:text-[#0B3861] underline mt-2 inline-block"
                       >
-                        🚰 Get testnet tokens
+                        Get testnet tokens
                       </a>
                     </div>
                   </motion.div>

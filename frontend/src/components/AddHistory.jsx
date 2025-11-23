@@ -44,8 +44,8 @@ export default function AddHistory() {
 
   return (
     <div className="card">
-      <h2>📚 Add Medical History</h2>
-      {isSuccess && <div className="success">✅ Medical history added</div>}
+      <h2>Add Medical History</h2>
+      {isSuccess && <div className="success">Medical history added</div>}
 
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">

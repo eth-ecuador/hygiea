@@ -92,7 +92,6 @@ describe("MedicalRecords", function () {
 
   describe("Gestión de Permisos", function () {
     beforeEach(async function () {
-      // Registrar paciente y médicos
       await medicalRecords.connect(paciente).registrarPaciente(
         "María García", 35, "F", "O+", "Calle Principal 123",
         "+52 555 1234", "maria@email.com", "SSN-123456789"
@@ -215,7 +214,6 @@ describe("MedicalRecords", function () {
     });
 
     it("Debería filtrar enfermedades activas", async function () {
-      // Agregar 3 enfermedades
       await medicalRecords.connect(paciente).agregarEnfermedad(
         paciente.address, "Diabetes", "Desc", "Moderada", "Tratamiento"
       );
@@ -226,7 +224,6 @@ describe("MedicalRecords", function () {
         paciente.address, "Hipertensión", "Desc", "Leve", "Tratamiento"
       );
 
-      // Marcar gripe como inactiva
       await medicalRecords.connect(paciente).marcarEnfermedadInactiva(paciente.address, 1);
 
       const activas = await medicalRecords.connect(paciente).obtenerEnfermedadesActivas(paciente.address);
@@ -345,16 +342,11 @@ describe("MedicalRecords", function () {
         "Telefono Secreto", "email@secreto.com", "SSN-SECRETO"
       );
 
-      // Intentar leer storage directamente (debería estar cifrado)
-      // En Sapphire, eth_getStorageAt retorna 0x0 para datos cifrados
       const contractAddress = await medicalRecords.getAddress();
 
-      // Slot 0 debería estar cifrado (registros mapping)
       const slot0 = await ethers.provider.getStorage(contractAddress, 0);
 
-      // En Sapphire, storage cifrado retorna 0
       console.log("Storage slot 0:", slot0);
-      // No podemos verificar directamente, pero los datos NO deberían ser legibles
     });
   });
 });

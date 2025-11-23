@@ -33,7 +33,6 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     }
   },
-  // Verification configuration for Sourcify
   etherscan: {
     enabled: false  // Disable Etherscan (not supported on Sapphire)
   },

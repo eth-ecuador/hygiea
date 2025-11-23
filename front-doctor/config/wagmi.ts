@@ -2,7 +2,6 @@ import { createConfig, http } from 'wagmi';
 import { sapphire, sapphireTestnet } from 'wagmi/chains';
 import { injectedWithSapphire, sapphireHttpTransport } from '@oasisprotocol/sapphire-wagmi-v2';
 
-// Determine network based on ENV
 const isTestnet = process.env.NEXT_PUBLIC_NETWORK === 'testnet' || true;
 
 export const config = createConfig({

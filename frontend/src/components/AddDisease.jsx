@@ -38,8 +38,8 @@ export default function AddDisease() {
 
   return (
     <div className="card">
-      <h2>🩺 Add Disease</h2>
-      {isSuccess && <div className="success">✅ Disease added successfully</div>}
+      <h2>Add Disease</h2>
+      {isSuccess && <div className="success">Disease added successfully</div>}
 
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
@@ -97,7 +97,7 @@ export default function AddDisease() {
         </div>
 
         <button type="submit" className="button primary" disabled={isPending || isConfirming}>
-          {isPending || isConfirming ? '⏳ Saving...' : '💾 Save Disease'}
+          {isPending || isConfirming ? 'Saving...' : 'Save Disease'}
         </button>
       </form>
     </div>

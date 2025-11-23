@@ -3,23 +3,13 @@ pragma solidity ^0.8.20;
 
 import "@oasisprotocol/sapphire-contracts/contracts/Sapphire.sol";
 
-/**
- * @title MedicalRecords
- * @notice Confidential medical records system on Sapphire
- * @dev All data is encrypted in storage. Only accessible by the patient and authorized doctors.
- */
 contract MedicalRecords {
 
-    // ========== DATA STRUCTURES ==========
-
-    /**
-     * @notice Patient affiliation data
-     */
     struct AffiliationData {
         string nombre;
         uint8 edad;
-        string sexo; // "M", "F", "Other"
-        string tipoSangre; // "A+", "O-", etc.
+        string sexo;
+        string tipoSangre;
         string direccion;
         string telefono;
         string email;
@@ -27,32 +17,23 @@ contract MedicalRecords {
         uint256 fechaRegistro;
     }
 
-    /**
-     * @notice Existing disease
-     */
     struct Disease {
         string nombre;
         string descripcion;
         uint256 fechaDiagnostico;
-        string gravedad; // "Mild", "Moderate", "Severe"
+        string gravedad;
         bool activa;
         string tratamiento;
     }
 
-    /**
-     * @notice Medical history (personal or family)
-     */
     struct MedicalHistory {
-        string tipo; // "Personal" or "Family"
+        string tipo;
         string condicion;
         string descripcion;
-        string relacionFamiliar; // "Father", "Mother", "Brother", etc. (if applicable)
+        string relacionFamiliar;
         uint256 fecha;
     }
 
-    /**
-     * @notice Complete patient medical record
-     */
     struct PatientRecord {
         address pacienteAddress;
         bool existe;
@@ -63,19 +44,12 @@ contract MedicalRecords {
         address[] listaMedicos;
     }
 
-    // ========== STORAGE (All automatically encrypted) ==========
-
-    // Mapping from address => patient record
     mapping(address => PatientRecord) private registros;
 
-    // Registry of verified doctors (for simplicity, anyone can register)
     mapping(address => bool) public medicosRegistrados;
     mapping(address => string) private nombresMedicos;
 
-    // List of registered patients
     address[] private pacientesRegistrados;
-
-    // ========== EVENTS (No sensitive information) ==========
 
     event PacienteRegistrado(address indexed paciente, uint256 timestamp);
     event MedicoRegistrado(address indexed medico, uint256 timestamp);
@@ -84,8 +58,6 @@ contract MedicalRecords {
     event EnfermedadAgregada(address indexed paciente, uint256 timestamp);
     event AntecedenteAgregado(address indexed paciente, uint256 timestamp);
     event DatosActualizados(address indexed paciente, uint256 timestamp);
-
-    // ========== MODIFIERS ==========
 
     modifier soloMedicoRegistrado() {
         require(medicosRegistrados[msg.sender], "You are not a registered doctor");
@@ -105,12 +77,6 @@ contract MedicalRecords {
         _;
     }
 
-    // ========== REGISTRATION FUNCTIONS ==========
-
-    /**
-     * @notice Register a doctor in the system
-     * @param nombre Doctor's name
-     */
     function registrarMedico(string memory nombre) external {
         require(!medicosRegistrados[msg.sender], "You are already registered as a doctor");
         require(bytes(nombre).length > 0, "Invalid name");
@@ -121,10 +87,6 @@ contract MedicalRecords {
         emit MedicoRegistrado(msg.sender, block.timestamp);
     }
 
-    /**
-     * @notice Register new patient with affiliation data
-     * @param _pacienteAddress Patient's wallet address
-     */
     function registrarPaciente(
         address _pacienteAddress,
         string memory _nombre,
@@ -163,12 +125,6 @@ contract MedicalRecords {
         emit PacienteRegistrado(_pacienteAddress, block.timestamp);
     }
 
-    // ========== PERMISSION MANAGEMENT ==========
-
-    /**
-     * @notice Authorize a doctor to access your data
-     * @param medico Doctor's address
-     */
     function autorizarMedico(address medico) external {
         require(registros[msg.sender].existe, "You are not registered");
         require(medicosRegistrados[medico], "The doctor is not registered");
@@ -180,17 +136,12 @@ contract MedicalRecords {
         emit MedicoAutorizado(msg.sender, medico);
     }
 
-    /**
-     * @notice Revoke access from a doctor
-     * @param medico Doctor's address
-     */
     function revocarMedico(address medico) external {
         require(registros[msg.sender].existe, "You are not registered");
         require(registros[msg.sender].medicosAutorizados[medico], "Doctor is not authorized");
 
         registros[msg.sender].medicosAutorizados[medico] = false;
 
-        // Remove from list
         address[] storage lista = registros[msg.sender].listaMedicos;
         for (uint i = 0; i < lista.length; i++) {
             if (lista[i] == medico) {
@@ -203,12 +154,6 @@ contract MedicalRecords {
         emit MedicoRevocado(msg.sender, medico);
     }
 
-    // ========== DISEASE MANAGEMENT ==========
-
-    /**
-     * @notice Add disease to the record
-     * @dev Only the patient or authorized doctor can add
-     */
     function agregarEnfermedad(
         address paciente,
         string memory nombre,
@@ -232,9 +177,6 @@ contract MedicalRecords {
         emit EnfermedadAgregada(paciente, block.timestamp);
     }
 
-    /**
-     * @notice Mark disease as inactive
-     */
     function marcarEnfermedadInactiva(address paciente, uint256 index)
         external
         soloAutorizado(paciente)
@@ -245,11 +187,6 @@ contract MedicalRecords {
         emit DatosActualizados(paciente, block.timestamp);
     }
 
-    // ========== MEDICAL HISTORY MANAGEMENT ==========
-
-    /**
-     * @notice Add personal or family medical history
-     */
     function agregarAntecedente(
         address paciente,
         string memory tipo,
@@ -272,11 +209,6 @@ contract MedicalRecords {
         emit AntecedenteAgregado(paciente, block.timestamp);
     }
 
-    // ========== DATA UPDATE ==========
-
-    /**
-     * @notice Update affiliation data
-     */
     function actualizarAfiliacion(
         string memory _nombre,
         uint8 _edad,
@@ -297,11 +229,6 @@ contract MedicalRecords {
         emit DatosActualizados(msg.sender, block.timestamp);
     }
 
-    // ========== QUERIES (View Functions) ==========
-
-    /**
-     * @notice Get affiliation data
-     */
     function obtenerAfiliacion(address paciente)
         external
         view
@@ -312,9 +239,6 @@ contract MedicalRecords {
         return registros[paciente].afiliacion;
     }
 
-    /**
-     * @notice Get all diseases
-     */
     function obtenerEnfermedades(address paciente)
         external
         view
@@ -325,9 +249,6 @@ contract MedicalRecords {
         return registros[paciente].enfermedades;
     }
 
-    /**
-     * @notice Get only active diseases
-     */
     function obtenerEnfermedadesActivas(address paciente)
         external
         view
@@ -338,13 +259,11 @@ contract MedicalRecords {
 
         Disease[] memory todasEnfermedades = registros[paciente].enfermedades;
 
-        // Count active ones
         uint count = 0;
         for (uint i = 0; i < todasEnfermedades.length; i++) {
             if (todasEnfermedades[i].activa) count++;
         }
 
-        // Create array of active ones
         Disease[] memory activas = new Disease[](count);
         uint index = 0;
         for (uint i = 0; i < todasEnfermedades.length; i++) {
@@ -357,9 +276,6 @@ contract MedicalRecords {
         return activas;
     }
 
-    /**
-     * @notice Get medical history
-     */
     function obtenerAntecedentes(address paciente)
         external
         view
@@ -370,9 +286,6 @@ contract MedicalRecords {
         return registros[paciente].antecedentes;
     }
 
-    /**
-     * @notice Verify if a doctor is authorized
-     */
     function estaMedicoAutorizado(address paciente, address medico)
         external
         view
@@ -381,9 +294,6 @@ contract MedicalRecords {
         return registros[paciente].medicosAutorizados[medico];
     }
 
-    /**
-     * @notice Get list of authorized doctors
-     */
     function obtenerMedicosAutorizados(address paciente)
         external
         view
@@ -393,16 +303,10 @@ contract MedicalRecords {
         return registros[paciente].listaMedicos;
     }
 
-    /**
-     * @notice Verify if the patient exists
-     */
     function pacienteExiste(address paciente) external view returns (bool) {
         return registros[paciente].existe;
     }
 
-    /**
-     * @notice Get doctor's name
-     */
     function obtenerNombreMedico(address medico)
         external
         view
@@ -412,9 +316,6 @@ contract MedicalRecords {
         return nombresMedicos[medico];
     }
 
-    /**
-     * @notice Get total number of registered patients
-     */
     function totalPacientes() external view returns (uint256) {
         return pacientesRegistrados.length;
     }

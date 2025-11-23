@@ -2,13 +2,12 @@ import { createConfig } from 'wagmi';
 import { sapphire, sapphireTestnet } from 'wagmi/chains';
 import { injectedWithSapphire, sapphireHttpTransport } from '@oasisprotocol/sapphire-wagmi-v2';
 
-// Determine network based on ENV
 const isTestnet = import.meta.env.VITE_NETWORK === 'testnet';
 
 export const config = createConfig({
   chains: isTestnet ? [sapphireTestnet] : [sapphire],
   connectors: [
-    injectedWithSapphire(), // MetaMask with Sapphire encryption
+    injectedWithSapphire(),
   ],
   transports: isTestnet ? {
     [sapphireTestnet.id]: sapphireHttpTransport(),

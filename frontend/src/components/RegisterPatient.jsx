@@ -24,10 +24,8 @@ export default function RegisterPatient() {
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
-  // Generate encrypted data preview in real-time
   useEffect(() => {
     if (formData.nombre || formData.email || formData.telefono) {
-      // Simulate how encrypted data would look (example hash)
       const dataString = JSON.stringify(formData);
       const hashedData = keccak256(toUtf8Bytes(dataString));
       setEncryptedPreview(hashedData);
@@ -37,14 +35,12 @@ export default function RegisterPatient() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate Ethereum address format
     if (!formData.pacienteAddress.match(/^0x[a-fA-F0-9]{40}$/)) {
       alert('Please enter a valid wallet address (format: 0x...)');
       return;
     }
 
     try {
-      // First normalize to lowercase, then convert to checksummed
       const normalizedAddress = formData.pacienteAddress.toLowerCase();
       const checksummedAddress = getAddress(normalizedAddress);
 
@@ -78,10 +74,8 @@ export default function RegisterPatient() {
       [name]: value
     });
 
-    // If changing patient address, show checksummed version
     if (name === 'pacienteAddress' && value.match(/^0x[a-fA-F0-9]{40}$/)) {
       try {
-        // First normalize to lowercase to avoid checksum errors
         const normalizedAddress = value.toLowerCase();
         const checksummed = getAddress(normalizedAddress);
         setChecksummedAddress(checksummed);
@@ -96,7 +90,7 @@ export default function RegisterPatient() {
   if (isSuccess) {
     return (
       <div className="card">
-        <h2>✅ Patient Registered</h2>
+        <h2>Patient Registered</h2>
         <p>Your medical record has been successfully created on Sapphire blockchain.</p>
         <p>All your data is encrypted and only you and the doctors you authorize can access it.</p>
         <button className="button secondary" onClick={() => window.location.reload()}>
@@ -108,7 +102,7 @@ export default function RegisterPatient() {
 
   return (
     <div className="card">
-      <h2>📋 Register Patient</h2>
+      <h2>Register Patient</h2>
       <p className="subtitle">All data will be encrypted on blockchain</p>
 
       <form onSubmit={handleSubmit} className="form">

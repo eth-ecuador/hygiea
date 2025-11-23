@@ -23,12 +23,12 @@ export default function ConnectWallet() {
 
       {error && (
         <div className="error">
-          <p>❌ Error: {error.message}</p>
+          <p>Error: {error.message}</p>
         </div>
       )}
 
       <div className="info-box">
-        <h3>⚠️ Required Configuration</h3>
+        <h3>Required Configuration</h3>
         <p>Make sure you have MetaMask configured with Sapphire Testnet:</p>
         <ul>
           <li><strong>Network Name:</strong> Sapphire Testnet</li>
@@ -42,7 +42,7 @@ export default function ConnectWallet() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            🚰 Get testnet tokens
+            Get testnet tokens
           </a>
         </p>
       </div>

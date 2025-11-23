@@ -44,7 +44,7 @@ export default function ManagePermissions() {
 
   return (
     <div className="card">
-      <h2>🔐 Manage Permissions</h2>
+      <h2>Manage Permissions</h2>
       <p>Authorize or revoke doctor access to view your medical history</p>
 
       <div className="form-group">
@@ -62,11 +62,11 @@ export default function ManagePermissions() {
         onClick={handleAutorizar}
         disabled={!medicoAddress || isPendingAutorizar}
       >
-        {isPendingAutorizar ? '⏳ Authorizing...' : '✅ Authorize Doctor'}
+        {isPendingAutorizar ? 'Authorizing...' : 'Authorize Doctor'}
       </button>
 
-      {successAutorizar && <div className="success">✅ Doctor authorized successfully</div>}
-      {successRevocar && <div className="success">✅ Access revoked successfully</div>}
+      {successAutorizar && <div className="success">Doctor authorized successfully</div>}
+      {successRevocar && <div className="success">Access revoked successfully</div>}
 
       <div className="record-section">
         <h3>Authorized Doctors</h3>
